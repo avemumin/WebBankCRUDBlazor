@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29911.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebBankCRUD.Server", "WebBankCRUD\Server\WebBankCRUD.Server.csproj", "{DDC0661E-4C2B-47DE-9E32-8C69B9F5C023}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebBankCRUD.Client", "WebBankCRUD\Client\WebBankCRUD.Client.csproj", "{00A1DD91-CB6C-4116-AFF3-05B4596A3081}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebBankCRUD.Shared", "WebBankCRUD\Shared\WebBankCRUD.Shared.csproj", "{5E0637CB-A597-43EC-BBE1-5521B9642B32}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DDC0661E-4C2B-47DE-9E32-8C69B9F5C023}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDC0661E-4C2B-47DE-9E32-8C69B9F5C023}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDC0661E-4C2B-47DE-9E32-8C69B9F5C023}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDC0661E-4C2B-47DE-9E32-8C69B9F5C023}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00A1DD91-CB6C-4116-AFF3-05B4596A3081}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00A1DD91-CB6C-4116-AFF3-05B4596A3081}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00A1DD91-CB6C-4116-AFF3-05B4596A3081}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00A1DD91-CB6C-4116-AFF3-05B4596A3081}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E0637CB-A597-43EC-BBE1-5521B9642B32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E0637CB-A597-43EC-BBE1-5521B9642B32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E0637CB-A597-43EC-BBE1-5521B9642B32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E0637CB-A597-43EC-BBE1-5521B9642B32}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {34AF69D2-79FF-48B2-AA4E-2C3F6777D6C2}
+	EndGlobalSection
+EndGlobal
