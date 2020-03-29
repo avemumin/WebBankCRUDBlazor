@@ -1,0 +1,16 @@
+﻿<tr>
+    @*<td><b>@qdrItem.IdCurrencyFaceValue</b> </td>*@
+    <td><b>@qdrItem.FaceValue</b> </td>
+    <td><b>@qdrItem.CountedCount.ToString("### ### ### ###")</b> </td>
+    <td><b>@qdrItem.Count.ToString("### ### ### ###")</b> </td>
+    <td><b>@qdrItem.QualityValue</b> </td>
+    <td><b>@qdrItem.Symbol</b> </td>
+    <td><b>@qdrItem.ModeValue</b> </td>
+
+</tr>
+
+@code {
+    [Parameter] public QualityDetailReportDTO qdrItem { get; set; }
+
+ 
+}

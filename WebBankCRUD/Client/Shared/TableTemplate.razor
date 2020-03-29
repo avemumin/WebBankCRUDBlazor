@@ -1,0 +1,25 @@
+﻿<div class="table-wrapper-scroll-y my-custom-scrollbar">
+    <table class="table table-bordered table-striped mb-0">
+        <thead class="bg-light  text-sm-center">
+            <tr style="background-color:cadetblue">
+                @*<th><b>ID</b></th>*@
+                <th><b>Wrt. nominału</b></th>
+                <th><b>Łączna ilość nominału</b></th>
+                <th><b>Ilość z kryterium</b></th>
+                <th><b>Kryterium</b></th>
+                <th><b>Waluta</b></th>
+                <th><b>Tryb</b></th>
+            </tr>
+        </thead>
+        <tbody class=" text-sm-center">
+            @foreach (var item in Qualities)
+            {
+                <SimpleTableItem qdrItem="item"/>
+            }
+        </tbody>
+    </table>
+</div>
+
+@code {
+    [Parameter] public List<QualityDetailReportDTO> Qualities { get; set; }
+}

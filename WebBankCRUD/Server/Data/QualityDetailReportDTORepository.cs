@@ -52,7 +52,8 @@ namespace WebBankCRUD.Server.Data
                 CountedCount = (int)reader["CountedCount"],
                 Count = (int)reader["Counts"],
                 QualityValue = (string)reader["QualityValue"],
-                Symbol = (string)reader["Symbol"]
+                Symbol = (string)reader["Symbol"],
+                ModeValue=(string)reader["ModeValue"]
             };
         }
     }

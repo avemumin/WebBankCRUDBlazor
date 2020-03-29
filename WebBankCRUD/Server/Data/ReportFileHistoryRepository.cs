@@ -33,9 +33,9 @@ namespace WebBankCRUD.Server.Data
                         {
                             response.Add(MapToValue(reader));
                         }
-                    }
-                    //na wszelki wypadek tylko 10
-                    return response.Take(10).ToList();
+                    } 
+                    //na wszelki wypadek tylko 20
+                    return response.OrderByDescending(x=>x.IdFileHistory).Take(20).ToList();
                 }
             }
         }

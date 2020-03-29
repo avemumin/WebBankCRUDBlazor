@@ -1,0 +1,64 @@
+﻿@page "/repfilehist"
+@inject HttpClient http
+@inject IJSRuntime js
+@using System.IO;
+@using System.Globalization;
+
+@if (rfh == null)
+{
+    <LoadingData DisplayMessage="true"></LoadingData>
+}
+else if (rfh.Length == 0)
+{
+    <text> Brak danych do wyświetlenia </text>
+}
+else
+{
+    <h3>Historia raportów</h3>
+
+
+    <TableTemplatesRFH fh="rfh.ToList()"></TableTemplatesRFH>
+
+    <nav class="nav nav-pills flex-column flex-sm-row">
+        <a class="flex-sm-fill text-sm-center nav-link active" href="/piaskownica">Wróć do poprzedniej storny</a>
+    </nav>
+    <br/>
+    <nav class="nav nav-pills nav-justified">
+        <a class="nav-link text-sm-center nav-link active" href="/piaskownica">Wróć do poprzedniej storny</a>
+    </nav>
+    <br/>
+    <button class="btn btn-success" @onclick="ExportToCsv"> Eksport do CSV</button>
+
+}
+
+
+@code {
+    FileHistoryDTO[] rfh { get; set; }
+    protected async override Task OnInitializedAsync()
+    {
+        await LoadData();
+    }
+
+    async Task LoadData()
+    {
+        await Task.WhenAll();
+        rfh = await http.GetJsonAsync<FileHistoryDTO[]>("api/ReportFileHistory/Get");
+    }
+
+    private void ExportToCsv()
+    {
+        using (var memoryStream = new MemoryStream())
+        {
+            using (var wri = new StreamWriter(memoryStream))
+            {
+                using (var csv = new CsvHelper.CsvWriter(wri, CultureInfo.CreateSpecificCulture("en-US")))
+                {
+                    csv.WriteRecords(rfh);
+                }
+                var array = memoryStream.ToArray();
+                js.SaveAs("reportHistory.csv", array);
+            }
+        }
+    }
+
+}

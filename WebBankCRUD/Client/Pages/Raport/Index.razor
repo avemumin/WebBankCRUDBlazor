@@ -1,47 +1,23 @@
 ﻿@page "/report"
 @inject HttpClient http
-<h3>Bank report</h3>
+<h3>Raport jakościowy banknotów</h3>
 @if (qdr == null)
 {
-    <text> Loading... </text>
+    <LoadingData></LoadingData>
 }
 else if (qdr.Length == 0)
 {
-    <text> There are no records in the database </text>
+    <text> Brak danych do wyświetlenia </text>
 }
 else
 {
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id.</th>
-                <th>Wrt. nominału</th>
-                <th>Łączna ilość nominału</th>
-                <th>Ilość z kryterium</th>
-                <th>Kryterium</th>
-                <th>Symbol</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var q in qdr)
-            {
-                <tr>
-                    @*<td>
-                            <a class="btn btn-success">Edit</a>
-                            <button class="btn btn-danger">Delete</button>
-                        </td>*@
-                    <td>@q.IdCurrencyFaceValue</td>
-                    <td>@q.FaceValue</td>
-                    <td><b> @q.CountedCount.ToString("### ### ### ###")</b> </td>
-                    <td>@q.Count.ToString("### ### ### ###")</td>
-                    <td>@q.QualityValue</td>
-                    <td>@q.Symbol</td>
+    <TableTemplate Qualities="qdr.ToList()"/>
 
-                </tr>
-            }
-        </tbody>
-    </table>
-
+    <br/>
+    
+    <nav class="nav nav-pills flex-column flex-sm-row">
+        <a class="flex-sm-fill text-sm-center nav-link active" href="/piaskownica">Wróć do poprzedniej storny</a>
+    </nav>
 }
 
 @code {
@@ -55,10 +31,7 @@ else
 
     async Task LoadData()
     {
-        qdr = await http.GetJsonAsync<QualityDetailReportDTO[]>("api/QualityDetail/Get/2/1/2020-01-01/2020-05-01");
-        //qdr = new QualityDetailReportDTO[]
-        //{
-        //    new QualityDetailReportDTO(){ IdCurrencyFaceValue=1,FaceValue=10.00m,CountedCount=123123,QualityValue="3",Symbol="PLN"}
-        //};
+        qdr = await http.GetJsonAsync<QualityDetailReportDTO[]>("api/QualityDetail/Get/3/2/2020-01-01/2020-04-01");
+       
     }
 }

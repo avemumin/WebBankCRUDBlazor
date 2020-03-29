@@ -12,6 +12,6 @@ namespace WebBankCRUD.Shared.ModelsDTO
         public long Count { get; set; }
         public string QualityValue { get; set; }
         public string Symbol { get; set; }
-
+        public string ModeValue { get; set; }
     }
 }
