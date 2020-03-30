@@ -1,20 +1,19 @@
-﻿@page "/qualitypage"
+﻿@page "/qualitypageandmachines"
 @inject HttpClient http
-
-@if (qdr == null)
+@if (qdrm == null)
 {
     <LoadingData DisplayMessage="false"></LoadingData>
 }
-else if (qdr.Length == 0)
+else if (qdrm.Length == 0)
 {
     <text> Brak danych do wyświetlenia </text>
 }
 else
 {
-    <h3>Raport jakościowy banknotów</h3>
+    <h3>Raport jakościowy banknotów z uwzględnieniem urządzeń liczących</h3>
     <br />
-    <TableTemplate Qualities="qdr.ToList()" />
-      
+    <TableTemplateRQM QualitiesM="qdrm.ToList()" />
+
 
     <br />
 
@@ -23,12 +22,9 @@ else
     </nav>
 }
 
-
-
-
-
 @code {
-    QualityDetailReportDTO[] qdr { get; set; }
+
+    QualityDetailReportAndMachineDTO[] qdrm { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
@@ -37,7 +33,7 @@ else
 
     async Task LoadData()
     {
-        qdr = await http.GetJsonAsync<QualityDetailReportDTO[]>("api/QualityDetail/Get/3/2/2020-01-01/2020-04-01");
+        qdrm = await http.GetJsonAsync<QualityDetailReportAndMachineDTO[]>("api/QualityDetailAndMachine/Get/3/2/2020-01-01/2020-04-01");
 
     }
 }

@@ -42,9 +42,9 @@ namespace WebBankCRUD.Server.Data
         {
             return new QualityDetailReportAndMachineDTO()
             {
-                IdMachine=(int)reader["IdMachine"],
-                SN =(string)reader["SN"],
                 IdCurrencyFaceValue = (short)reader["IdCurrencyFaceValue"],
+                IdMachine =(int)reader["IdMachine"],
+                SN =(string)reader["SN"],
                 FaceValue = (decimal)reader["FaceValue"],
                 CountedCount = (int)reader["CountedCount"],
                 Count = (int)reader["Counts"],

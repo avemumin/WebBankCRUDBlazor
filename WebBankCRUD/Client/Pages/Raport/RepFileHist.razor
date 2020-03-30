@@ -20,14 +20,14 @@ else
     <TableTemplatesRFH fh="rfh.ToList()"></TableTemplatesRFH>
 
     <nav class="nav nav-pills flex-column flex-sm-row">
-        <a class="flex-sm-fill text-sm-center nav-link active" href="/piaskownica">Wróć do poprzedniej storny</a>
+        <a class="flex-sm-fill text-sm-center nav-link active" href="/reportstochoose">Wróć do poprzedniej storny</a>
     </nav>
     <br/>
     <nav class="nav nav-pills nav-justified">
-        <a class="nav-link text-sm-center nav-link active" href="/piaskownica">Wróć do poprzedniej storny</a>
+        <a class="nav-link text-sm-center nav-link active" href="/reportstochoose">Wróć do poprzedniej storny</a>
     </nav>
     <br/>
-    <button class="btn btn-success" @onclick="ExportToCsv"> Eksport do CSV</button>
+    @*<button class="btn btn-success" @onclick="ExportToCsv"> Eksport do CSV</button>*@
 
 }
 
@@ -45,20 +45,20 @@ else
         rfh = await http.GetJsonAsync<FileHistoryDTO[]>("api/ReportFileHistory/Get");
     }
 
-    private void ExportToCsv()
-    {
-        using (var memoryStream = new MemoryStream())
-        {
-            using (var wri = new StreamWriter(memoryStream))
-            {
-                using (var csv = new CsvHelper.CsvWriter(wri, CultureInfo.CreateSpecificCulture("en-US")))
-                {
-                    csv.WriteRecords(rfh);
-                }
-                var array = memoryStream.ToArray();
-                js.SaveAs("reportHistory.csv", array);
-            }
-        }
-    }
+    //private void ExportToCsv()
+    //{
+    //    using (var memoryStream = new MemoryStream())
+    //    {
+    //        using (var wri = new StreamWriter(memoryStream))
+    //        {
+    //            using (var csv = new CsvHelper.CsvWriter(wri, CultureInfo.CreateSpecificCulture("en-US")))
+    //            {
+    //                csv.WriteRecords(rfh);
+    //            }
+    //            var array = memoryStream.ToArray();
+    //            js.SaveAs("reportHistory.csv", array);
+    //        }
+    //    }
+    //}
 
 }

@@ -1,9 +1,9 @@
 ﻿@page "/report"
 @inject HttpClient http
-<h3>Raport jakościowy banknotów</h3>
+
 @if (qdr == null)
 {
-    <LoadingData></LoadingData>
+    <LoadingData DisplayMessage="false"></LoadingData>
 }
 else if (qdr.Length == 0)
 {
@@ -11,10 +11,12 @@ else if (qdr.Length == 0)
 }
 else
 {
-    <TableTemplate Qualities="qdr.ToList()"/>
+    <h3>Raport jakościowy banknotów</h3>
+    <br />
+    <TableTemplate Qualities="qdr.ToList()" />
 
-    <br/>
-    
+    <br />
+
     <nav class="nav nav-pills flex-column flex-sm-row">
         <a class="flex-sm-fill text-sm-center nav-link active" href="/piaskownica">Wróć do poprzedniej storny</a>
     </nav>
@@ -32,6 +34,6 @@ else
     async Task LoadData()
     {
         qdr = await http.GetJsonAsync<QualityDetailReportDTO[]>("api/QualityDetail/Get/3/2/2020-01-01/2020-04-01");
-       
+
     }
 }
