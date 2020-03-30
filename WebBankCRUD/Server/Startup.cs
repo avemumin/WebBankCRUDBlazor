@@ -28,6 +28,7 @@ namespace WebBankCRUD.Server
         {
             services.AddScoped<ReportFileHistoryRepository>();
             services.AddScoped<QualityDetailReportDTORepository>();
+            services.AddScoped<QualityDetailReportAndMachineDTORepository>();
             services.AddDbContext<BankContext>(options=>options.UseSqlServer(Configuration.GetConnectionString("DbConn")));
             //  services.AddControllersWithViews();
             services.AddMvc().AddNewtonsoftJson(options => options.SerializerSettings.Formatting = Formatting.Indented)

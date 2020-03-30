@@ -253,3 +253,7 @@ app {
         opacity: 1;
     }
 }
+.self-alert-color{
+    font-weight:bold;
+    color:red;
+}
