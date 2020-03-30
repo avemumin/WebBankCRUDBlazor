@@ -13,8 +13,26 @@ else
 {
     <h3>Raport jakościowy banknotów</h3>
     <br />
-    <TableTemplate Qualities="qdr.ToList()" />
-      
+      <TableTemplate ReportItems="qdr">
+          <TableHeader>
+              <th><b>Wrt. nominału</b></th>
+              <th><b>Łączna ilość nominału</b></th>
+              <th><b>Ilość z kryterium</b></th>
+              <th><b>Kryterium</b></th>
+              <th><b>Waluta</b></th>
+              <th><b>Tryb</b></th>
+          </TableHeader>
+          <RowTemplate Context="quality">
+              <tr>
+                  <td><b>@quality.FaceValue</b> </td>
+                  <td><b>@quality.CountedCount.ToString("### ### ### ###")</b> </td>
+                  <td><b>@quality.Count.ToString("### ### ### ###")</b> </td>
+                  <td><b>@quality.QualityValue</b> </td>
+                  <td><b>@quality.Symbol</b> </td>
+                  <td><b>@quality.ModeValue</b> </td>
+              </tr>
+          </RowTemplate>
+      </TableTemplate>
 
     <br />
 

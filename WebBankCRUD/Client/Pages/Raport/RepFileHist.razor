@@ -16,17 +16,35 @@ else
 {
     <h3>Historia raportów</h3>
 
-
-    <TableTemplatesRFH fh="rfh.ToList()"></TableTemplatesRFH>
+    <TableTemplate ReportItems="rfh">
+        <TableHeader>
+            <th><b>ID</b></th>
+            <th><b>Nazwa pliku</b></th>
+            <th><b>Powodzenie</b></th>
+            <th><b>Opis błędu</b></th>
+            <th><b>Data</b></th>
+            <th><b>Id zliczenia</b></th>
+        </TableHeader>
+        <RowTemplate Context="item">
+            <tr>
+                <td>@item.IdFileHistory</td>
+                <td>@item.FileName</td>
+                <td>@item.IsProceededSuccess</td>
+                <td>@item.ErrorDescription</td>
+                <td>@item.ProcessDate</td>
+                <td>@item.IdCountResult</td>
+            </tr>
+        </RowTemplate>
+    </TableTemplate>
 
     <nav class="nav nav-pills flex-column flex-sm-row">
         <a class="flex-sm-fill text-sm-center nav-link active" href="/reportstochoose">Wróć do poprzedniej storny</a>
     </nav>
-    <br/>
+    <br />
     <nav class="nav nav-pills nav-justified">
         <a class="nav-link text-sm-center nav-link active" href="/reportstochoose">Wróć do poprzedniej storny</a>
     </nav>
-    <br/>
+    <br />
     @*<button class="btn btn-success" @onclick="ExportToCsv"> Eksport do CSV</button>*@
 
 }

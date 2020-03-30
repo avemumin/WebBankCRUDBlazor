@@ -12,7 +12,30 @@ else
 {
     <h3>Raport jakościowy banknotów z uwzględnieniem urządzeń liczących</h3>
     <br />
-    <TableTemplateRQM QualitiesM="qdrm.ToList()" />
+    <TableTemplate ReportItems="qdrm">
+        <TableHeader>
+            <th><b>Id.Urządzenia</b></th>
+            <th><b>Nr.Seryjny</b></th>
+            <th><b>Wrt. nominału</b></th>
+            <th><b>Łączna ilość nominału</b></th>
+            <th><b>Ilość z kryterium</b></th>
+            <th><b>Kryterium</b></th>
+            <th><b>Waluta</b></th>
+            <th><b>Tryb</b></th>
+        </TableHeader>
+        <RowTemplate Context="qdrItemM">
+            <tr>
+                <td><b>@qdrItemM.IdMachine</b> </td>
+                <td><b>@qdrItemM.SN</b> </td>
+                <td><b>@qdrItemM.FaceValue</b> </td>
+                <td><b>@qdrItemM.CountedCount.ToString("### ### ### ###")</b> </td>
+                <td><b>@qdrItemM.Count.ToString("### ### ### ###")</b> </td>
+                <td><b>@qdrItemM.QualityValue</b> </td>
+                <td><b>@qdrItemM.Symbol</b> </td>
+                <td><b>@qdrItemM.ModeValue</b> </td>
+            </tr>
+        </RowTemplate>
+    </TableTemplate>
 
 
     <br />
@@ -33,7 +56,7 @@ else
 
     async Task LoadData()
     {
-        qdrm = await http.GetJsonAsync<QualityDetailReportAndMachineDTO[]>("api/QualityDetailAndMachine/Get/3/2/2020-01-01/2020-04-01");
+        qdrm = await http.GetJsonAsync<QualityDetailReportAndMachineDTO[]>("api/QualityDetailAndMachine/Get/2/2/2020-01-01/2020-04-01");
 
     }
 }
